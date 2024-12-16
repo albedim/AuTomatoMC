@@ -5,6 +5,9 @@ import me.albedim.automatomc.utility.http.ai.AiAPI;
 import me.albedim.automatomc.utility.http.ai.ai_schema.MessageSchema;
 import org.bukkit.entity.Player;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class AIChatHandler {
 
     public static AIChat createChat(Player player) {
@@ -41,10 +44,21 @@ public class AIChatHandler {
     }
 
     public static String addMessage(AIChat chat, String message) {
+        int autoMessagesRemover = Integer.parseInt(AuTomatoMC.getInstance().getConfigurationParam("auto_messages_remover"));
+        if (chat.getMessages().size() >= autoMessagesRemover) {
+            removeMessage(chat, 1);
+            removeMessage(chat, 2);
+        }
         chat.getMessages().add(new MessageSchema("user", message));
         String response = AiAPI.getResponse(chat);
         chat.getMessages().add(new MessageSchema("assistant", response));
         return response;
+    }
+
+    public static void removeMessage(AIChat chat, int i) {
+        ArrayList<MessageSchema> messages = chat.getMessages();
+        messages.remove(i);
+        chat.setMessages(messages);
     }
 
 }
