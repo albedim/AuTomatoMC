@@ -1,0 +1,11 @@
+# create a free API KEY on groq.com
+groq_api_key: "your_groq_api_key"
+
+# If you change this, you must also change the command in the plugin.yml file
+ai_command: "ai"
+max_words: 100
+# Labels
+error_message: "§7(§e%ai_name%§7) §8➜ §7Sorry, I can't answer at the moment."
+ai_on: "§e§l%ai_name% ON \n§7Da ora parlerai solo con %ai_name%"
+ai_off: "§e§l%ai_name% OFF"
+language: "italian"

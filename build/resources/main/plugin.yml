@@ -1,0 +1,9 @@
+name: AuTomatoMC
+version: '1.0-SNAPSHOT'
+main: me.albedim.automatomc.AuTomatoMC
+api-version: '1.21'
+commands:
+  ai:
+    description: AI command
+    permission: ai.command
+    permission-message: You do not have permission to use this command
